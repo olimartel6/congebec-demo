@@ -18,8 +18,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;backdrop-filter:blur(20px);background:rgba(15,25,35,.85)}
 nav.scrolled{padding:14px 60px;background:rgba(15,25,35,.95);box-shadow:0 2px 40px rgba(0,0,0,.15)}
-.logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--white);letter-spacing:-1px}
-.logo span{color:var(--accent)}
 .nav-links{display:flex;gap:36px;align-items:center}
 .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:.3s}
 .nav-links a:hover{color:var(--accent)}
@@ -27,8 +25,9 @@ nav.scrolled{padding:14px 60px;background:rgba(15,25,35,.95);box-shadow:0 2px 40
 .nav-cta:hover{background:var(--accent2)!important}
 
 /* HERO */
-.hero{min-height:100vh;background:linear-gradient(165deg,rgba(15,25,35,.88) 0%,rgba(22,39,54,.85) 40%,rgba(43,58,78,.82) 100%),url('images/Entrepot.jpg') center/cover;display:flex;align-items:center;padding:140px 80px 100px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:800px;height:800px;background:radial-gradient(circle,rgba(0,163,224,.08) 0%,transparent 70%);pointer-events:none}
+.hero{min-height:100vh;background:linear-gradient(165deg,rgba(15,25,35,.88) 0%,rgba(22,39,54,.82) 40%,rgba(43,58,78,.78) 100%),url('images/Entrepot.jpg') center/cover;display:flex;align-items:center;padding:140px 80px 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:800px;height:800px;background:radial-gradient(circle,rgba(0,163,224,.08) 0%,transparent 70%);pointer-events:none;animation:float 8s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(15,25,35,.6),transparent);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1400px;margin:0 auto;align-items:center;position:relative;z-index:1}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,163,224,.12);border:1px solid rgba(0,163,224,.25);padding:8px 20px;border-radius:50px;font-size:13px;color:var(--accent);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:28px}
@@ -49,6 +48,17 @@ nav.scrolled{padding:14px 60px;background:rgba(15,25,35,.95);box-shadow:0 2px 40
 .stat-num{font-family:'Playfair Display',serif;font-size:48px;font-weight:800;color:var(--accent);margin-bottom:4px}
 .stat-label{font-size:14px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;font-weight:500}
 
+/* COUNTER ANIMATION */
+.count-up{transition:all .6s}
+
+/* IMAGE BANNER */
+.img-banner{padding:0;overflow:hidden;position:relative}
+.img-banner img{width:100%;height:420px;object-fit:cover;display:block;filter:brightness(.85)}
+.img-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(15,25,35,.4) 50%,transparent 100%);display:flex;align-items:center;padding:0 80px}
+.img-banner-text{max-width:500px}
+.img-banner-text h2{font-family:'Playfair Display',serif;font-size:42px;font-weight:800;color:var(--white);margin-bottom:12px;line-height:1.1}
+.img-banner-text p{font-size:16px;color:rgba(255,255,255,.6);line-height:1.6}
+
 /* SECTION STYLES */
 section{padding:120px 80px}
 .section-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;position:relative;padding-left:40px}
@@ -59,11 +69,12 @@ section{padding:120px 80px}
 /* SERVICES */
 .services{background:var(--warm)}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px;max-width:1400px;margin-left:auto;margin-right:auto}
-.service-card{background:var(--white);border-radius:16px;padding:44px 36px;border:1px solid rgba(0,0,0,.04);transition:all .4s;position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.service-card{background:var(--white);border-radius:16px;padding:44px 36px;border:1px solid rgba(0,0,0,.04);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.1)}
 .service-card:hover::before{transform:scaleX(1)}
-.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:24px;color:var(--white)}
+.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;overflow:hidden}
+.service-icon img{width:100%;height:100%;object-fit:cover;border-radius:14px}
 .service-card h3{font-size:22px;font-weight:700;margin-bottom:12px;color:var(--navy)}
 .service-card p{font-size:15px;color:var(--muted);line-height:1.7}
 
@@ -72,11 +83,10 @@ section{padding:120px 80px}
 .locations .section-title{color:var(--white)}
 .locations .section-sub{color:rgba(255,255,255,.5)}
 .loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:60px;max-width:1400px}
-.loc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;transition:all .4s;cursor:pointer}
-.loc-card:hover{background:rgba(0,163,224,.08);border-color:rgba(0,163,224,.2);transform:translateY(-4px)}
+.loc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;transition:all .5s cubic-bezier(.16,1,.3,1);cursor:pointer}
+.loc-card:hover{background:rgba(0,163,224,.08);border-color:rgba(0,163,224,.2);transform:translateY(-6px) scale(1.02)}
 .loc-city{font-size:18px;font-weight:700;margin-bottom:6px}
 .loc-province{font-size:13px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;font-weight:500;margin-bottom:12px}
-.loc-detail{font-size:13px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:6px}
 .loc-temp{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-top:8px}
 .loc-temp.frozen{background:rgba(0,163,224,.15);color:var(--accent)}
 .loc-temp.fresh{background:rgba(39,174,96,.15);color:var(--success)}
@@ -84,25 +94,39 @@ section{padding:120px 80px}
 
 /* CERTIFICATIONS */
 .certs{background:var(--white)}
-.cert-row{display:flex;gap:40px;justify-content:center;align-items:center;margin-top:50px;flex-wrap:wrap}
-.cert-badge{display:flex;flex-direction:column;align-items:center;gap:12px;padding:30px 40px;background:var(--warm);border-radius:16px;border:1px solid rgba(0,0,0,.04);transition:all .3s;min-width:160px}
-.cert-badge:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06)}
-.cert-icon{font-size:36px}
+.cert-row{display:flex;gap:32px;justify-content:center;align-items:stretch;margin-top:50px;flex-wrap:wrap}
+.cert-badge{display:flex;flex-direction:column;align-items:center;gap:14px;padding:32px 28px;background:var(--warm);border-radius:16px;border:1px solid rgba(0,0,0,.04);transition:all .5s cubic-bezier(.16,1,.3,1);min-width:170px;flex:1;max-width:220px}
+.cert-badge:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,.08)}
+.cert-badge img{height:60px;object-fit:contain;filter:grayscale(.3);transition:filter .3s}
+.cert-badge:hover img{filter:grayscale(0)}
 .cert-name{font-size:14px;font-weight:700;color:var(--navy);text-align:center}
 .cert-desc{font-size:11px;color:var(--muted);text-align:center}
 
 /* ABOUT */
 .about{background:linear-gradient(135deg,var(--warm) 0%,var(--white) 100%)}
-.about-img{width:100%;border-radius:16px;margin-bottom:24px;box-shadow:0 20px 60px rgba(0,0,0,.1)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1400px;margin-top:60px;align-items:center}
 .about-text{font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:20px}
+.about-img{width:100%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.1);transition:transform .6s;margin-bottom:24px}
+.about-img:hover{transform:scale(1.02)}
 .about-highlight{background:var(--navy);color:var(--white);border-radius:20px;padding:50px;position:relative;overflow:hidden}
-.about-highlight::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(0,163,224,.15),transparent);pointer-events:none}
+.about-highlight::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(0,163,224,.15),transparent);pointer-events:none;animation:float 6s ease-in-out infinite}
 .about-highlight .stat-num{font-size:64px}
 .about-milestones{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
 .milestone{text-align:center}
 .milestone-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;color:var(--accent)}
 .milestone-label{font-size:12px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* NEWS */
+.news{background:var(--warm)}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px;max-width:1400px}
+.news-card{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,.04);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.news-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.news-card img{width:100%;height:220px;object-fit:cover;transition:transform .6s}
+.news-card:hover img{transform:scale(1.05)}
+.news-body{padding:28px}
+.news-date{font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.news-card h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.3}
+.news-card p{font-size:14px;color:var(--muted);line-height:1.6}
 
 /* CTA */
 .cta-section{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);padding:100px 80px;text-align:center;position:relative;overflow:hidden}
@@ -110,23 +134,30 @@ section{padding:120px 80px}
 .cta-section h2{font-family:'Playfair Display',serif;font-size:48px;font-weight:800;color:var(--white);margin-bottom:16px;position:relative;z-index:1}
 .cta-section p{font-size:18px;color:rgba(255,255,255,.8);margin-bottom:40px;position:relative;z-index:1}
 .btn-white{background:var(--white);color:var(--accent2);padding:18px 44px;border-radius:8px;font-weight:700;font-size:16px;text-decoration:none;transition:all .3s;display:inline-block;position:relative;z-index:1}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.2)}
 
 /* FOOTER */
 footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;max-width:1400px;margin-bottom:60px}
-.footer-brand{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--white);margin-bottom:16px}
-.footer-brand span{color:var(--accent)}
-.footer-desc{font-size:14px;line-height:1.7;max-width:320px}
+.footer-desc{font-size:14px;line-height:1.7;max-width:320px;margin-top:16px}
 .footer-col h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--white);margin-bottom:20px}
 .footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:12px;transition:.3s}
 .footer-col a:hover{color:var(--accent)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:30px;display:flex;justify-content:space-between;font-size:13px}
 
 /* ANIMATIONS */
-.fade-in{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-in{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
 .fade-in.visible{opacity:1;transform:translateY(0)}
-.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
+.slide-left{opacity:0;transform:translateX(-50px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.slide-left.visible{opacity:1;transform:translateX(0)}
+.slide-right{opacity:0;transform:translateX(50px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.slide-right.visible{opacity:1;transform:translateX(0)}
+.scale-in{opacity:0;transform:scale(.9);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.scale-in.visible{opacity:1;transform:scale(1)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}.delay-5{transition-delay:.5s}
+
+/* PARALLAX */
+.parallax-slow{transition:transform .1s linear}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
@@ -137,9 +168,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
   .services-grid{grid-template-columns:1fr 1fr}
   .loc-grid{grid-template-columns:1fr 1fr}
   .about-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .hero h1{font-size:48px}
   .section-title{font-size:40px}
+  .img-banner img{height:300px}
+  .img-banner-overlay{padding:0 30px}
+  .img-banner-text h2{font-size:32px}
 }
 @media(max-width:640px){
   .nav-links{display:none}
@@ -149,18 +184,20 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
   .cert-row{gap:16px}
   .about-milestones{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr}
+  .img-banner img{height:240px}
 }
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <div class="logo"><img src="images/LogoCongebec-Horizontal_Couleur_CMYK-texte-blanc-768x291.png" alt="Congebec" style="height:36px"></div>
+  <img src="images/LogoCongebec-Horizontal_Couleur_CMYK-texte-blanc-768x291.png" alt="Congebec" style="height:36px">
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#locations">Locations</a>
     <a href="#about">About</a>
     <a href="#certifications">Certifications</a>
+    <a href="#news">News</a>
     <a href="https://congebec.com/en/careers" target="_blank">Careers</a>
     <a href="#contact" class="nav-cta">Get a Quote</a>
   </div>
@@ -173,32 +210,31 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
       <h1 class="fade-in delay-1">The <em>Cold Chain</em><br>You Can Trust</h1>
       <p class="fade-in delay-2">Canada's leading temperature-controlled warehousing and logistics partner. 16 facilities coast-to-coast, serving the food industry with precision and care since 1975.</p>
       <div class="hero-btns fade-in delay-3">
-        <a href="#contact" class="btn-primary">Request a Quote <span>&#8594;</span></a>
+        <a href="#contact" class="btn-primary">Request a Quote &rarr;</a>
         <a href="#services" class="btn-outline">Our Services</a>
       </div>
     </div>
     <div class="hero-visual fade-in delay-2">
       <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-num">16</div>
-          <div class="stat-label">Facilities</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">6</div>
-          <div class="stat-label">Provinces</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">50+</div>
-          <div class="stat-label">Years</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">24/7</div>
-          <div class="stat-label">Operations</div>
-        </div>
+        <div class="stat-card"><div class="stat-num" data-count="16">0</div><div class="stat-label">Facilities</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="6">0</div><div class="stat-label">Provinces</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="50">0</div><div class="stat-label">Years</div></div>
+        <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Operations</div></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- BANNER IMAGE -->
+<div class="img-banner">
+  <img src="images/2023-11_Mascouche-3-credit-Archimed-Studio.webp" alt="Congebec Mascouche Facility">
+  <div class="img-banner-overlay">
+    <div class="img-banner-text fade-in">
+      <h2>State-of-the-Art Facilities</h2>
+      <p>Our Mascouche distribution center represents the latest in cold chain technology and efficiency.</p>
+    </div>
+  </div>
+</div>
 
 <section class="services" id="services">
   <div class="section-tag fade-in">What We Do</div>
@@ -206,32 +242,32 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
   <p class="section-sub fade-in delay-2">From storage to distribution, we handle every step of the temperature-controlled supply chain with industry-leading standards.</p>
   <div class="services-grid">
     <div class="service-card fade-in delay-1">
-      <div class="service-icon">&#10052;</div>
+      <div class="service-icon" style="background:linear-gradient(135deg,#0077B6,#00A3E0);font-size:24px;color:#fff;font-weight:700">-25&deg;</div>
       <h3>Cold Storage</h3>
       <p>Multi-temperature warehousing from -25&deg;C to +15&deg;C. Frozen, refrigerated, and ambient zones in BRCGS-certified facilities across Canada.</p>
     </div>
     <div class="service-card fade-in delay-2">
-      <div class="service-icon">&#128666;</div>
+      <div class="service-icon" style="background:linear-gradient(135deg,#2B3A4E,#4A5A6A);font-size:20px;color:#fff;font-weight:700">GPS</div>
       <h3>Distribution</h3>
       <p>Refrigerated transportation network connecting all major Canadian markets. GPS-tracked fleet with real-time temperature monitoring.</p>
     </div>
     <div class="service-card fade-in delay-3">
-      <div class="service-icon">&#128230;</div>
+      <div class="service-icon" style="background:linear-gradient(135deg,#00A3E0,#27AE60);font-size:18px;color:#fff;font-weight:700">E2E</div>
       <h3>Logistics Management</h3>
       <p>End-to-end supply chain optimization. Inventory management, order fulfillment, and cross-docking services tailored to your needs.</p>
     </div>
-    <div class="service-card fade-in delay-1">
-      <div class="service-icon">&#128200;</div>
+    <div class="service-card slide-left delay-1">
+      <div class="service-icon" style="background:linear-gradient(135deg,#C9A84C,#D4AF37);font-size:18px;color:#fff;font-weight:700">V.A.</div>
       <h3>Value-Added Services</h3>
       <p>Labeling, repacking, blast freezing, and quality inspection. Custom solutions to meet your specific product requirements.</p>
     </div>
-    <div class="service-card fade-in delay-2">
-      <div class="service-icon">&#128274;</div>
+    <div class="service-card slide-left delay-2">
+      <div class="service-icon" style="background:linear-gradient(135deg,#27AE60,#2ECC71);font-size:16px;color:#fff;font-weight:700">SAFE</div>
       <h3>Food Safety</h3>
       <p>HACCP protocols, BRCGS certification, and CFIA compliance. Your products are handled with the highest food safety standards.</p>
     </div>
-    <div class="service-card fade-in delay-3">
-      <div class="service-icon">&#128187;</div>
+    <div class="service-card slide-left delay-3">
+      <div class="service-icon" style="background:linear-gradient(135deg,#0F1923,#2B3A4E);font-size:16px;color:#00A3E0;font-weight:700">WMS</div>
       <h3>Technology</h3>
       <p>Real-time WMS integration, EDI connectivity, and 24/7 online inventory visibility. Seamless connection with your supply chain systems.</p>
     </div>
@@ -262,35 +298,59 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
   <div style="text-align:center">
     <div class="section-tag fade-in" style="padding-left:0">Certifications</div>
     <h2 class="section-title fade-in delay-1" style="margin:0 auto 8px">Industry-Leading<br>Standards</h2>
-    <p class="section-sub fade-in delay-2" style="margin:0 auto">Our facilities meet and exceed the most rigorous food safety and quality certifications in the industry.</p>
+    <p class="section-sub fade-in delay-2" style="margin:0 auto">Our facilities meet and exceed the most rigorous food safety and quality certifications.</p>
   </div>
   <div class="cert-row">
-    <div class="cert-badge fade-in delay-1"><div class="cert-icon">&#9989;</div><div class="cert-name">BRCGS</div><div class="cert-desc">Global Food Safety</div></div>
-    <div class="cert-badge fade-in delay-2"><div class="cert-icon">&#127967;</div><div class="cert-name">GCCA</div><div class="cert-desc">Cold Chain Association</div></div>
-    <div class="cert-badge fade-in delay-3"><div class="cert-icon">&#128737;</div><div class="cert-name">CFIA</div><div class="cert-desc">Canadian Food Agency</div></div>
-    <div class="cert-badge fade-in delay-4"><div class="cert-icon">&#128203;</div><div class="cert-name">HACCP</div><div class="cert-desc">Hazard Analysis</div></div>
-    <div class="cert-badge fade-in delay-1"><div class="cert-icon">&#127981;</div><div class="cert-name">PIP</div><div class="cert-desc">Preventive Controls</div></div>
+    <div class="cert-badge scale-in delay-1"><img src="images/BRC-600x400-1-qs7u79ilzf2ewv9hh8nsrvsk4fvuzgzma4e39fti1g.jpg" alt="BRCGS"><div class="cert-name">BRCGS</div><div class="cert-desc">Global Food Safety Standard</div></div>
+    <div class="cert-badge scale-in delay-2"><img src="images/gcca.png" alt="GCCA"><div class="cert-name">GCCA</div><div class="cert-desc">Cold Chain Association</div></div>
+    <div class="cert-badge scale-in delay-3"><img src="images/cfia.png" alt="CFIA"><div class="cert-name">CFIA</div><div class="cert-desc">Canadian Food Inspection</div></div>
+    <div class="cert-badge scale-in delay-4"><img src="images/pip.jpg" alt="PIP"><div class="cert-name">PIP</div><div class="cert-desc">Preventive Controls</div></div>
+    <div class="cert-badge scale-in delay-5"><img src="images/gcca-gold.png" alt="GCCA Gold"><div class="cert-name">GCCA Gold</div><div class="cert-desc">Energy Excellence</div></div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section class="about" id="about">
-  <div class="section-tag fade-in">Our Story</div>
-  <h2 class="section-title fade-in delay-1">50 Years of Cold<br>Chain Excellence</h2>
+  <div class="section-tag slide-left">Our Story</div>
+  <h2 class="section-title slide-left delay-1">50 Years of Cold<br>Chain Excellence</h2>
   <div class="about-grid">
     <div>
-      <img src="images/Solution-logistique-1200x800-1-1024x683.png" alt="Congebec logistics" class="about-img fade-in delay-1">
+      <img src="images/Solution-logistique-1200x800-1-1024x683.png" alt="Congebec logistics" class="about-img slide-left delay-2">
       <p class="about-text fade-in delay-2">Founded in 1975 in Quebec, Congebec has grown from a single cold storage facility to Canada's premier temperature-controlled logistics provider. Our commitment to food safety, innovation, and client service has made us the trusted partner of leading food manufacturers and retailers across North America.</p>
       <p class="about-text fade-in delay-3">With strategic partnerships including CN Railway, we continue to expand our network and capabilities to meet the evolving needs of the Canadian food supply chain.</p>
-      <a href="#contact" class="btn-primary fade-in delay-4" style="margin-top:12px">Partner With Us <span>&#8594;</span></a>
+      <a href="#contact" class="btn-primary fade-in delay-4" style="margin-top:12px">Partner With Us &rarr;</a>
     </div>
-    <div class="about-highlight fade-in delay-2">
-      <div class="stat-num" style="text-align:center">50+</div>
-      <div style="text-align:center;font-size:16px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:32px">Years Strong</div>
+    <div class="about-highlight slide-right delay-2">
+      <img src="images/50e-Congebec.gif" alt="50 years" style="width:100%;border-radius:12px;margin-bottom:24px">
       <div class="about-milestones">
         <div class="milestone"><div class="milestone-num">1975</div><div class="milestone-label">Founded</div></div>
         <div class="milestone"><div class="milestone-num">16</div><div class="milestone-label">Facilities</div></div>
         <div class="milestone"><div class="milestone-num">1000+</div><div class="milestone-label">Employees</div></div>
         <div class="milestone"><div class="milestone-num">6</div><div class="milestone-label">Provinces</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="section-tag fade-in">Latest News</div>
+  <h2 class="section-title fade-in delay-1">What's New at<br>Congebec</h2>
+  <div class="news-grid">
+    <div class="news-card fade-in delay-2">
+      <img src="images/TIM-LUDWIG-Banner.png" alt="Tim Ludwig">
+      <div class="news-body">
+        <div class="news-date">November 2025</div>
+        <h3>New Executive Appointment</h3>
+        <p>Congebec welcomes Tim Ludwig to the executive leadership team, strengthening our strategic direction for growth.</p>
+      </div>
+    </div>
+    <div class="news-card fade-in delay-3">
+      <img src="images/CN-Banniere-Article-1.png" alt="CN Partnership">
+      <div class="news-body">
+        <div class="news-date">October 2025</div>
+        <h3>Strategic Partnership with CN Railway</h3>
+        <p>Expanding our distribution network through a new partnership with CN, enabling faster coast-to-coast cold chain logistics.</p>
       </div>
     </div>
   </div>
@@ -305,7 +365,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand"><img src="images/LogoCongebec-Horizontal_Couleur_CMYK-texte-blanc-768x291.png" alt="Congebec" style="height:32px"></div>
+      <img src="images/LogoCongebec-Horizontal_Couleur_CMYK-texte-blanc-768x291.png" alt="Congebec" style="height:32px">
       <p class="footer-desc">Canada's leading temperature-controlled warehousing and logistics partner. Coast-to-coast cold chain solutions since 1975.</p>
     </div>
     <div class="footer-col">
@@ -326,7 +386,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
       <h4>Contact</h4>
       <a href="mailto:info@congebec.com">info@congebec.com</a>
       <a href="tel:+14505851888">+1 (450) 585-1888</a>
-      <a href="#">Mascouche, QC</a>
+      <a>Mascouche, QC, Canada</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -340,12 +400,32 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in,.slide-left,.slide-right,.scale-in').forEach(el => observer.observe(el));
 
 // Nav scroll effect
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 });
+
+// Counter animation
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      if (!target) return;
+      let current = 0;
+      const increment = target / 40;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current) + (target === 50 ? '+' : '');
+      }, 30);
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 </script>
 </body>
 </html>

@@ -27,7 +27,7 @@ nav.scrolled{padding:14px 60px;background:rgba(15,25,35,.95);box-shadow:0 2px 40
 .nav-cta:hover{background:var(--accent2)!important}
 
 /* HERO */
-.hero{min-height:100vh;background:linear-gradient(165deg,var(--navy) 0%,#162736 40%,var(--steel) 100%);display:flex;align-items:center;padding:140px 80px 100px;position:relative;overflow:hidden}
+.hero{min-height:100vh;background:linear-gradient(165deg,rgba(15,25,35,.88) 0%,rgba(22,39,54,.85) 40%,rgba(43,58,78,.82) 100%),url('images/Entrepot.jpg') center/cover;display:flex;align-items:center;padding:140px 80px 100px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:800px;height:800px;background:radial-gradient(circle,rgba(0,163,224,.08) 0%,transparent 70%);pointer-events:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(15,25,35,.6),transparent);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1400px;margin:0 auto;align-items:center;position:relative;z-index:1}
@@ -93,6 +93,7 @@ section{padding:120px 80px}
 
 /* ABOUT */
 .about{background:linear-gradient(135deg,var(--warm) 0%,var(--white) 100%)}
+.about-img{width:100%;border-radius:16px;margin-bottom:24px;box-shadow:0 20px 60px rgba(0,0,0,.1)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1400px;margin-top:60px;align-items:center}
 .about-text{font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:20px}
 .about-highlight{background:var(--navy);color:var(--white);border-radius:20px;padding:50px;position:relative;overflow:hidden}
@@ -154,7 +155,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
 <body>
 
 <nav id="nav">
-  <div class="logo">Conge<span>bec</span></div>
+  <div class="logo"><img src="images/LogoCongebec-Horizontal_Couleur_CMYK-texte-blanc-768x291.png" alt="Congebec" style="height:36px"></div>
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#locations">Locations</a>
@@ -277,6 +278,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
   <h2 class="section-title fade-in delay-1">50 Years of Cold<br>Chain Excellence</h2>
   <div class="about-grid">
     <div>
+      <img src="images/Solution-logistique-1200x800-1-1024x683.png" alt="Congebec logistics" class="about-img fade-in delay-1">
       <p class="about-text fade-in delay-2">Founded in 1975 in Quebec, Congebec has grown from a single cold storage facility to Canada's premier temperature-controlled logistics provider. Our commitment to food safety, innovation, and client service has made us the trusted partner of leading food manufacturers and retailers across North America.</p>
       <p class="about-text fade-in delay-3">With strategic partnerships including CN Railway, we continue to expand our network and capabilities to meet the evolving needs of the Canadian food supply chain.</p>
       <a href="#contact" class="btn-primary fade-in delay-4" style="margin-top:12px">Partner With Us <span>&#8594;</span></a>
@@ -303,7 +305,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 80px 40px}
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand">Conge<span>bec</span></div>
+      <div class="footer-brand"><img src="images/LogoCongebec-Horizontal_Couleur_CMYK-texte-blanc-768x291.png" alt="Congebec" style="height:32px"></div>
       <p class="footer-desc">Canada's leading temperature-controlled warehousing and logistics partner. Coast-to-coast cold chain solutions since 1975.</p>
     </div>
     <div class="footer-col">
